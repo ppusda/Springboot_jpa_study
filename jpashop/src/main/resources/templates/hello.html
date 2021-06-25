@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>HELLO, SPRING!</title>
+        <meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
+    </head>
+    <body>
+        <p th:text="'안녕, 봄수철!!, ' + ${data}"> 안녕하세요. 손님</p>
+    </body>
+</html>
+
+<!-- implementation 'org.springframework.boot:spring-boot-devtools' 를 gradle에 추가해주고
+ build 메뉴에서 바꾼 페이지만 recompile 해주면 서버 재시작을 하지 않아도 정상적으로 바뀌는 걸 볼 수 있다. -->
