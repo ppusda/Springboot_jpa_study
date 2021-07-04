@@ -11,7 +11,8 @@ import java.util.List;
 @Getter @Setter
 public class Member {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue // ID 값이 항상 생성되어 있는 것이 보장 됨.
     @Column(name = "member_id")
     private Long Id;
 
