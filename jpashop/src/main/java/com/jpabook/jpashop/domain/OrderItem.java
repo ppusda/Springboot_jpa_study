@@ -51,6 +51,6 @@ public class OrderItem {
 
     // -- 조회 로직 -- //
     public int getTotalPrice() {
-        return getOrderPrice() + getCount();
+        return getOrderPrice() * getCount();
     }
 }
