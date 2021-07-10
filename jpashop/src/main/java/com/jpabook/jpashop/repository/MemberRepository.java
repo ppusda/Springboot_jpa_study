@@ -28,7 +28,7 @@ public class MemberRepository {
     }
 
     public List<Member> findAll() {
-        return em.createQuery("selelct m from Member m", Member.class) // 여기서도 from의 대상이 Entity이다.
+        return em.createQuery("select m from Member m", Member.class) // 여기서도 from의 대상이 Entity이다.
                 .getResultList();
     }
     //JPQL - sql로 번역이 되어 사용되기에 본질은 같지만, 엔티티 객체를 대상으로 쿼리를 쓴다는 것에 차이가 있다.

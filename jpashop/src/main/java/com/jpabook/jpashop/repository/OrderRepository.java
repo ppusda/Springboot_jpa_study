@@ -27,6 +27,8 @@ public class OrderRepository {
 
     public List<Order> findAll(OrderSearch orderSearch) {
         // Query DSL을 사용할 예정이다.
+        List<Order> list = null;
+        return list;
     }
 }
 // 정적 쿼리가 아니라 동적 쿼리를 작성해야하는 상황이 왔다...
