@@ -1,5 +1,6 @@
 package com.jpabook.jpashop.service;
 
+import com.jpabook.jpashop.domain.item.Book;
 import com.jpabook.jpashop.domain.item.Item;
 import com.jpabook.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,17 @@ public class ItemService {
     public void saveItem(Item item) {
         itemRepository.save(item);
     }
+
+    @Transactional
+    public void updateItem(Long itemId, String name, int price, int stockQuantity) {
+        Item findItem = itemRepository.findOne(itemId);
+        findItem.setName(name);
+        findItem.setPrice(price);
+        findItem.setStockQuantity(stockQuantity);
+    }
+    // findItem으로 찾아온 이 객체는 영속성이기에, 커밋이 된다. (후에 flush(변경된 것 찾아서 변경시킴))
+    // 어설프게 파라미터로 엔티티를 쓰지말고, 필요한 객체만 뽑아와서 업데이트에 사용한다.
+    // 업데이트 할게 많다? => DTO를 만들자
 
     public List<Item> findItems() {
         return itemRepository.findAll();
