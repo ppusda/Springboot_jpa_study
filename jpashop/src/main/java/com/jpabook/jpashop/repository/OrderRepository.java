@@ -30,7 +30,7 @@ public class OrderRepository {
         List<Order> list = null;
         return list;
     }
-}
+
 // 정적 쿼리가 아니라 동적 쿼리를 작성해야하는 상황이 왔다...
 //        em.createQuery("select o from Order o join o.member m" +
 //                "where o.status = :status" +
@@ -43,26 +43,31 @@ public class OrderRepository {
 // 동적 쿼리를 작성해보자
 // 동적 쿼리의 안 좋은 예...
 // 1.
-/*        String jpql = "select o from Order o join o.member m";
+    public List<Order> findAllbyString(OrderSearch orderSearch) {
+        String jpql = "select o from Order o join o.member m";
         boolean isFirstCondition = true;
 
         // 주문 상태 검색
-        if(orderSearch.getOrderStatus() != null) {
-            if(isFirstCondition) {
+            if(orderSearch.getOrderStatus()!=null)
+
+        {
+            if (isFirstCondition) {
                 jpql += " where";
                 isFirstCondition = false;
-            } else{
+            } else {
                 jpql += " and";
             }
             jpql += "m.name like :status";
         }
 
         // 회원 이름 검색
-        if(StringUtils.hasText(orderSearch.getMemberName())) {
-            if(isFirstCondition) {
+            if(StringUtils.hasText(orderSearch.getMemberName()))
+
+        {
+            if (isFirstCondition) {
                 jpql += " where";
                 isFirstCondition = false;
-            } else{
+            } else {
                 jpql += " and";
             }
             jpql += "m.name like :name";
@@ -71,15 +76,19 @@ public class OrderRepository {
         TypedQuery<Order> query = em.createQuery(jpql, Order.class)
                 .setMaxResults(1000);
 
-        if (orderSearch.getOrderStatus() != null) {
+            if(orderSearch.getOrderStatus()!=null)
+
+        {
             query = query.setParameter("status", orderSearch.getOrderStatus());
         }
-        if(StringUtils.hasText(orderSearch.getMemberName())) {
+            if(StringUtils.hasText(orderSearch.getMemberName()))
+
+        {
             query = query.setParameter("name", orderSearch.getMemberName());
         }
 
-        return query.getResultList();*/
-
+            return query.getResultList();
+    }
 // 문자열을 더하는 것에는 버그도 많고 한계가 있다.
 // 코드 작성하는데만 한 면이 쓰이기도 하므로 쓰면 안된다.
 
@@ -111,3 +120,5 @@ public class OrderRepository {
     }*/
 // 1번의 상위호환... 코드도 줄고 성능도 좋지만... 너무 어렵고 유지보수가 힘들다.
 // 하지만 JPA 표준스펙이기도 한 만큼... 좋은 기술이기는 하지만 실무에서 쓰기 힘든 코드이다.
+
+}
